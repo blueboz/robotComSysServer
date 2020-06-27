@@ -10,6 +10,7 @@ public class StoryItem {
   private String soundurl;
   private String storyid;
   private String text;
+  private String imgurl;
 
 
   public String getId() {
@@ -47,4 +48,11 @@ public class StoryItem {
     this.text = text;
   }
 
+  public String getImgurl() {
+    return imgurl;
+  }
+
+  public void setImgurl(String imgurl) {
+    this.imgurl = imgurl;
+  }
 }

@@ -3,15 +3,46 @@ package cn.boz.robotComSys.pojo;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 @Document("examitem")
 public class ExamItem {
 
   private String id;
-  private String examid;
-  private double mark;
-  private String soundurl;
+  private String userid;
+  private String storyid;
   private String storyitemid;
+  private Integer mark;
+  private String soundurl;
+  private Date inserttime;
+  private Date updateTime;
+  private Integer updatecount ;
 
+  public ExamItem() {
+  }
+
+  public ExamItem(String userid, String storyid, String storyitemid, String soundurl, Date inserttime) {
+    this.userid = userid;
+    this.storyid = storyid;
+    this.storyitemid = storyitemid;
+    this.soundurl = soundurl;
+    this.inserttime = inserttime;
+  }
+
+  public ExamItem(String userid, String storyid, String storyitemid, String soundurl) {
+    this.userid = userid;
+    this.storyid = storyid;
+    this.storyitemid = storyitemid;
+    this.soundurl = soundurl;
+  }
+
+  public String getUserid() {
+    return userid;
+  }
+
+  public void setUserid(String userid) {
+    this.userid = userid;
+  }
 
   public String getId() {
     return id;
@@ -21,33 +52,13 @@ public class ExamItem {
     this.id = id;
   }
 
-
-  public String getExamid() {
-    return examid;
+  public String getStoryid() {
+    return storyid;
   }
 
-  public void setExamid(String examid) {
-    this.examid = examid;
+  public void setStoryid(String storyid) {
+    this.storyid = storyid;
   }
-
-
-  public double getMark() {
-    return mark;
-  }
-
-  public void setMark(double mark) {
-    this.mark = mark;
-  }
-
-
-  public String getSoundurl() {
-    return soundurl;
-  }
-
-  public void setSoundurl(String soundurl) {
-    this.soundurl = soundurl;
-  }
-
 
   public String getStoryitemid() {
     return storyitemid;
@@ -57,4 +68,43 @@ public class ExamItem {
     this.storyitemid = storyitemid;
   }
 
+  public Integer getMark() {
+    return mark;
+  }
+
+  public void setMark(Integer mark) {
+    this.mark = mark;
+  }
+
+  public String getSoundurl() {
+    return soundurl;
+  }
+
+  public void setSoundurl(String soundurl) {
+    this.soundurl = soundurl;
+  }
+
+  public Date getInserttime() {
+    return inserttime;
+  }
+
+  public void setInserttime(Date inserttime) {
+    this.inserttime = inserttime;
+  }
+
+  public Date getUpdateTime() {
+    return updateTime;
+  }
+
+  public void setUpdateTime(Date updateTime) {
+    this.updateTime = updateTime;
+  }
+
+  public Integer getUpdatecount() {
+    return updatecount;
+  }
+
+  public void setUpdatecount(Integer updatecount) {
+    this.updatecount = updatecount;
+  }
 }

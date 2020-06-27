@@ -1,6 +1,7 @@
 package cn.boz.robotComSys.dao;
 
 import cn.boz.robotComSys.pojo.Story;
+import cn.boz.robotComSys.pojo.StoryItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -46,4 +47,7 @@ public class StoryDao {
         mongoTemplate.insert(story);
     }
 
+    public Story findById(String storyId){
+        return mongoTemplate.findById(storyId,Story.class);
+    }
 }

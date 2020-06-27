@@ -26,6 +26,10 @@ public class UserDao {
         return mongoTemplate.findAll(User.class);
     }
 
+    public User queryById(String id){
+        return mongoTemplate.findById(id,User.class);
+    }
+
     public User queryByName(String username) {
         List<User> list = mongoTemplate.find(query(where("username").is(username)), User.class);
         if (CollectionUtils.isEmpty(list)) {

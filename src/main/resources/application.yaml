@@ -10,5 +10,17 @@ spring:
       password: chenchen
       host: 127.0.0.1
       port: 27017
+  resources:
+    static-locations: file:///Volumes/Mac/Code/Others/osgiProj/robotComSysServer/upload/
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
 file-service:
   profile: /Volumes/Mac/Code/Others/osgiProj/robotComSysServer/upload
+logging:
+  pattern:
+    console: "%clr(%d{HH:mm:ss}){red} %clr(${LOG_LEVEL_PATTERN:%5p}){yellow} %clr(${PID:- }){green} %clr([%15.15t]){cyan} %clr(%L){blue} %clr(%-25logger{24}:){magenta} %clr(%m%n){faint}"
+  level:
+    root: info
+
