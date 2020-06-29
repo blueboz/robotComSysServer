@@ -11,6 +11,7 @@ public class StoryItem {
   private String storyid;
   private String text;
   private String imgurl;
+  private Integer order;
 
 
   public String getId() {
@@ -54,5 +55,13 @@ public class StoryItem {
 
   public void setImgurl(String imgurl) {
     this.imgurl = imgurl;
+  }
+
+  public Integer getOrder() {
+    return order;
+  }
+
+  public void setOrder(Integer order) {
+    this.order = order;
   }
 }

@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {AppMain.class})
@@ -44,16 +45,36 @@ public class JunitTest {
     }
 
     @Test
+    public void doTestFindByStoryItem(){
+        List<StoryItem> storyItems = storyItemDao.queryStoryItems("5ef8ae0442b1206b531afcc3");
+        storyItems.forEach(
+                it->{
+                    System.out.println(JSON.toJSONString(it));
+                }
+        );
+    }
+
+    @Test
     public void doTestAddStory() {
         Story story = new Story();
         story.setPubDate(new Date());
-        story.setStorydesc("这个故事没什么可以说的");
-        story.setStoryname("期中考试开始了!");
-        story.setLv(2);
-        story.setImg("938e9a73908a6f3b692a3a829abeca9d");
+        story.setStorydesc("测试用");
+        story.setStoryname("测试用");
+        story.setLv(1);
+        story.setImg("/img/808ea8cb05272ae4b6e71ba7fef0ea7a.jpg");
         storyDao.addStroy(story);
         ;
+    }
 
+    @Test
+    public void testAddStoryItem(){
+        StoryItem storyItem = new StoryItem();
+        storyItem.setImgurl("/");
+        storyItem.setOrder(1);
+        storyItem.setSoundurl("/sound/cat.mp3");
+        storyItem.setText("test");
+        storyItem.setStoryid("5ef8ae0442b1206b531afcc3");
+        storyItemDao.save(storyItem);
     }
 
     @Resource
@@ -61,10 +82,12 @@ public class JunitTest {
 
     @Test
     public void doTestAddUser() throws NoSuchAlgorithmException {
-        User user = new User(null, "", "student", "jj", "jj", 2);
-        String s = MyUtils.encryptPassword(user.getPassword());
-        user.setPassword(s);
-        userDao.addUser(user);
+        IntStream.range(0,10).forEach(it->{
+            User user = new User(null, "", "student", "student"+it, "student"+it, 1);
+            String s = MyUtils.encryptPassword(user.getPassword());
+            user.setPassword(s);
+            userDao.addUser(user);
+        });
     }
 
     @Test

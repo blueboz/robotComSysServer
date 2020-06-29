@@ -1,6 +1,7 @@
 package cn.boz.robotComSys.dao;
 
 import cn.boz.robotComSys.pojo.StoryItem;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -31,7 +32,19 @@ public class StoryItemDao {
         if (storyId==null||storyId.isEmpty()) {
             return new ArrayList<>();
         }
-        return mongoTemplate.find(query(where("storyid").is(storyId)), StoryItem.class);
+        List<StoryItem> storyid = mongoTemplate.find(query(where("storyid").is(storyId)).with(Sort.by(
+                Sort.Order.asc("order")
+        )), StoryItem.class);
+
+        return storyid;
+    }
+
+    /**
+     * 保存
+     * @param storyItem
+     */
+    public void save(StoryItem storyItem){
+        mongoTemplate.insert(storyItem);
     }
 
 

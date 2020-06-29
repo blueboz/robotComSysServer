@@ -38,3 +38,12 @@ dependencies {
 //tasks.withType(JavaExec) {
 //    jvmArgs += "--enable-preview"
 //}
+
+gradle.taskGraph.whenReady {
+    tasks.each { task ->
+        if (task.name.contains("test"))
+        {
+            task.enabled = false
+        }
+    }
+}

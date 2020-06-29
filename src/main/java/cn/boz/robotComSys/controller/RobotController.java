@@ -94,7 +94,7 @@ public class RobotController {
                 , token, user.getId(), (long) (1000 * 60 * 24)));
 
         map.put("token", token);
-        map.put("role", "student");
+        map.put("role", user.getRole());
         map.put("lv", user.getLevel());
         map.put("icon", user.getIcon());
         map.put("id", user.getId());
@@ -152,7 +152,11 @@ public class RobotController {
         if (file != null) {
             String originalFilename = file.getOriginalFilename();
             if (originalFilename != null) {
-                suffix = originalFilename.substring(originalFilename.lastIndexOf("."));
+                int idx=originalFilename.lastIndexOf(".");
+                if(idx==-1){
+                    return new ResponseResult(400, "文件类型不合法，已经丢弃!");
+                }
+                suffix = originalFilename.substring(idx);
                 List<String> collect = Stream.of(".mp3", ".aac").collect(Collectors.toList());
                 if (collect.contains(suffix)) {
                     persisitDir = "sound";

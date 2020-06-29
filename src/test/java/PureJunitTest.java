@@ -5,4 +5,9 @@ public class PureJunitTest {
     public void test(){
         String str;
     }
+
+    @Test
+    public void simpleSort(){
+
+    }
 }

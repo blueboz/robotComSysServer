@@ -28,7 +28,7 @@ public class User {
     private String password;
 
     //学生登记
-    @NotBlank(message = "学生等级不准为空")
+    @NotNull(message = "学生等级不准为空")
     private Integer level;
 
     public User() {
